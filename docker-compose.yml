@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  api:
+    volumes:
+      - ${PWD}:/app
+    image: python:3.9-slim-buster
+    working_dir: /app 
+    entrypoint: bash -c 'pip install --no-cache-dir -r requirements.txt && flask --debug --app src/app.py run -h 0.0.0.0 -p 80'
+    ports:
+      - 30000:80
